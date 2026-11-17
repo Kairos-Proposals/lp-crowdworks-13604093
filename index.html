@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案｜合同会社聖様 クラウドファンディングLP制作</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#10213F;
+    --indigo:#1B3F6B;
+    --indigo-light:#2E5A96;
+    --amber:#E8A33D;
+    --coral:#D6534E;
+    --mist:#EEF2F7;
+    --paper:#FBFCFE;
+    --ink:#1A2433;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans JP",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.label,.num{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+  }
+  .mono{
+    font-family:"Space Grotesk",sans-serif;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{
+    position:relative;
+    padding:100px 0;
+  }
+  @media (max-width:768px){
+    section{padding:64px 0;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(232,163,61,0.12), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(46,90,150,0.35), transparent 45%),
+      linear-gradient(160deg,#0C1A33 0%, var(--navy) 45%, #122646 100%);
+    color:#F2F5FA;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 0 80px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 70% 40%, black 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:48px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    letter-spacing:0.18em;
+    color:var(--amber);
+    border:1px solid rgba(232,163,61,0.5);
+    padding:7px 16px;
+    border-radius:999px;
+    margin-bottom:28px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 4px rgba(232,163,61,0.2);
+  }
+  .hero h1{
+    font-size:clamp(28px,4.4vw,48px);
+    font-weight:900;
+    line-height:1.55;
+    letter-spacing:0.02em;
+  }
+  .hero h1 .accent{
+    color:var(--amber);
+  }
+  .hero p.lead{
+    margin-top:28px;
+    font-size:15.5px;
+    color:#C7D3E6;
+    max-width:520px;
+  }
+  .hero-tags{
+    margin-top:34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .hero-tags span{
+    font-size:12px;
+    padding:6px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    color:#D7E0EE;
+  }
+
+  /* gauge visual */
+  .gauge-area{
+    display:flex;
+    justify-content:center;
+    position:relative;
+  }
+  .gauge{
+    width:280px;height:280px;
+    border-radius:50%;
+    background:conic-gradient(var(--amber) 0deg 237deg, rgba(255,255,255,0.08) 237deg 360deg);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    animation:spin-in 1.4s ease-out;
+  }
+  @keyframes spin-in{
+    from{transform:rotate(-70deg) scale(0.9);opacity:0;}
+    to{transform:rotate(0) scale(1);opacity:1;}
+  }
+  .gauge::after{
+    content:"";
+    position:absolute;
+    inset:16px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 25%, #16folder 0%, var(--navy) 70%);
+    background:radial-gradient(circle at 30% 25%, #1A2E52 0%, var(--navy) 72%);
+    box-shadow:inset 0 0 30px rgba(0,0,0,0.4);
+  }
+  .gauge-inner{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#F2F5FA;
+  }
+  .gauge-inner .pct{
+    font-size:46px;
+    font-weight:700;
+    color:var(--amber);
+  }
+  .gauge-inner .pct span{font-size:22px;}
+  .gauge-inner .cap{
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:#9FB0CA;
+    margin-top:4px;
+  }
+  .gauge-ring-label{
+    position:absolute;
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    color:#8498B8;
+  }
+  .gl1{top:-4px;left:50%;transform:translateX(-50%);}
+  .gl2{bottom:-4px;left:50%;transform:translateX(-50%);}
+
+  /* ---------- SECTION: UNDERSTANDING ---------- */
+  .understand{
+    background:var(--paper);
+  }
+  .sec-head{
+    max-width:680px;
+    margin-bottom:56px;
+  }
+  .sec-tag{
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--indigo);
+    font-weight:700;
+    display:block;
+    margin-bottom:14px;
+  }
+  .sec-head h2{
+    font-size:clamp(22px,3vw,32px);
+    font-weight:900;
+    color:var(--navy);
+    line-height:1.6;
+  }
+  .sec-head p{
+    margin-top:16px;
+    color:#51607A;
+    font-size:14.5px;
+  }
+  .understand-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  @media (max-width:760px){
+    .understand-grid{grid-template-columns:1fr;}
+  }
+  .u-card{
+    background:#fff;
+    border:1px solid #E3E9F2;
+    border-left:4px solid var(--indigo);
+    border-radius:10px;
+    padding:28px 26px;
+  }
+  .u-card .qno{
+    font-family:"Space Grotesk",sans-serif;
+    color:var(--coral);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.08em;
+  }
+  .u-card h3{
+    margin-top:10px;
+    font-size:16.5px;
+    color:var(--navy);
+    font-weight:700;
+  }
+  .u-card p{
+    margin-top:10px;
+    font-size:13.8px;
+    color:#56637C;
+  }
+
+  /* ---------- SECTION: VALUE ---------- */
+  .value{
+    background:
+      linear-gradient(180deg, var(--mist) 0%, #E4EAF3 100%);
+  }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  @media (max-width:900px){
+    .value-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:600px){
+    .value-grid{grid-template-columns:1fr;}
+  }
+  .v-card{
+    background:#fff;
+    border-radius:14px;
+    padding:30px 24px;
+    box-shadow:0 10px 30px -14px rgba(16,33,63,0.18);
+    position:relative;
+    overflow:hidden;
+  }
+  .v-card::before{
+    content:"";
+    position:absolute;
+    top:-30px;right:-30px;
+    width:90px;height:90px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(232,163,61,0.22), transparent 70%);
+  }
+  .v-icon{
+    width:46px;height:46px;
+    border-radius:12px;
+    margin-bottom:18px;
+    position:relative;
+    background:linear-gradient(135deg, var(--indigo), var(--navy));
+  }
+  .v-icon.gold{background:linear-gradient(135deg, var(--amber), #C9791F);}
+  .v-icon.coral{background:linear-gradient(135deg, var(--coral), #9F3230);}
+  .v-icon::after{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:2px solid rgba(255,255,255,0.8);
+  }
+  .v-card h3{
+    font-size:16.5px;
+    color:var(--navy);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .v-card p{
+    font-size:13.6px;
+    color:#56637C;
+  }
+  .v-num{
+    position:absolute;
+    right:20px;
+    top:18px;
+    font-family:"Space Grotesk",sans-serif;
+    font-size:28px;
+    font-weight:700;
+    color:#EAEFF6;
+    z-index:0;
+  }
+
+  /* ---------- SECTION: FLOW ---------- */
+  .flow{
+    background:var(--navy);
+    color:#EEF2F9;
+  }
+  .flow .sec-head h2{color:#fff;}
+  .flow .sec-head p{color:#A9B7CF;}
+  .flow .sec-tag{color:var(--amber);}
+  .timeline{
+    position:relative;
+    padding-left:34px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:9px;top:6px;bottom:6px;
+    width:2px;
+    background:linear-gradient(180deg, var(--amber), rgba(232,163,61,0.1));
+  }
+  .t-item{
+    position:relative;
+    padding-bottom:40px;
+  }
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";
+    position:absolute;
+    left:-34px;top:2px;
+    width:19px;height:19px;
+    border-radius:50%;
+    background:var(--navy);
+    border:3px solid var(--amber);
+  }
+  .t-item .t-step{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:12px;
+    letter-spacing:0.12em;
+    color:var(--amber);
+    font-weight:700;
+  }
+  .t-item h3{
+    margin-top:6px;
+    font-size:17px;
+    font-weight:700;
+    color:#fff;
+  }
+  .t-item p{
+    margin-top:8px;
+    font-size:13.8px;
+    color:#B7C3D9;
+    max-width:560px;
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:
+      radial-gradient(circle at 20% 30%, rgba(232,163,61,0.18), transparent 50%),
+      linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 60%, #3E6CA8 100%);
+    color:#fff;
+    text-align:center;
+  }
+  .closing h2{
+    font-size:clamp(22px,3.4vw,34px);
+    font-weight:900;
+    line-height:1.6;
+  }
+  .closing .accent{color:var(--amber);}
+  .closing p.lead2{
+    margin:22px auto 36px;
+    max-width:560px;
+    color:#E4EBF5;
+    font-size:14.5px;
+  }
+  .cta-box{
+    display:inline-flex;
+    flex-direction:column;
+    gap:14px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:16px;
+    padding:30px 40px;
+  }
+  @media (max-width:480px){
+    .cta-box{padding:24px 20px; width:100%;}
+  }
+  .cta-box .cta-main{
+    font-size:18px;
+    font-weight:700;
+  }
+  .cta-box .cta-sub{
+    font-size:12.5px;
+    color:#D9E2F0;
+  }
+  .btn{
+    margin-top:6px;
+    display:inline-block;
+    background:var(--amber);
+    color:var(--navy);
+    font-weight:700;
+    padding:14px 36px;
+    border-radius:999px;
+    font-size:14.5px;
+    letter-spacing:0.03em;
+    box-shadow:0 12px 24px -10px rgba(232,163,61,0.6);
+  }
+  footer{
+    background:var(--navy);
+    color:#8798B5;
+    text-align:center;
+    font-size:12px;
+    padding:28px 0;
+    letter-spacing:0.05em;
+  }
+  footer .brand{
+    color:var(--amber);
+    font-weight:700;
+    font-family:"Space Grotesk",sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">KAIROS PROPOSAL — for 合同会社聖 様</span>
+      <h1>海を越えてきた"いいモノ"に、<br>日本語で<span class="accent">灯</span>をともす。</h1>
+      <p class="lead">Makuake・CAMPFIRE向け商品LP制作のご相談を拝見しました。<br>
+      海外メーカーの魅力を、日本の支援者の心に届くデザインへ変換する――<br>
+      その"翻訳とデザインの両立"を、Kairosがチームでお手伝いします。</p>
+      <div class="hero-tags">
+        <span>Makuake / CAMPFIRE対応</span>
+        <span>海外素材の日本語ローカライズ</span>
+        <span>継続パートナーシップ歓迎</span>
+      </div>
+    </div>
+    <div class="gauge-area">
+      <div class="gauge">
+        <span class="gauge-ring-label gl1 mono">SUPPORT</span>
+        <div class="gauge-inner">
+          <div class="pct mono">237<span>%</span></div>
+          <div class="cap">TARGET ACHIEVED IMAGE</div>
+        </div>
+        <span class="gauge-ring-label gl2 mono">FUNDING</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNDERSTANDING -->
+<section class="understand">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">UNDERSTANDING / 募集内容の理解</span>
+      <h2>「構成は決まっている。足りないのは、<br>伝わる形にする手」というご依頼だと理解しています。</h2>
+      <p>御社はすでに構成・コピー・素材をお持ちです。求められているのは、ゼロから企画を考えるディレクターではなく、
+      海外メーカーの画像を日本語化し、訴求意図を汲み取って購入につながるビジュアルに仕上げられる"実装力のあるデザイナーチーム"。
+      その前提を踏まえ、私たちが力になれるポイントを整理しました。</p>
+    </div>
+    <div class="understand-grid">
+      <div class="u-card">
+        <span class="qno mono">ISSUE 01</span>
+        <h3>海外素材は「翻訳」だけでは完成しない</h3>
+        <p>英語・中国語表記の置き換えに加え、フォントの太さや余白バランスまで日本語に最適化しないと、
+        途端に"違和感のあるLP"になってしまう難しさを理解しています。</p>
+      </div>
+      <div class="u-card">
+        <span class="qno mono">ISSUE 02</span>
+        <h3>20〜25枚でも世界観を崩さない統一感</h3>
+        <p>サムネイル・見出し・リターン画像・GIFまで、枚数が増えるほど分業によるトーン崩れが起きやすい点。
+        1案件を少人数のチームで通すことで防げると考えています。</p>
+      </div>
+      <div class="u-card">
+        <span class="qno mono">ISSUE 03</span>
+        <h3>「美しさ」より「支援につながる訴求力」</h3>
+        <p>クラウドファンディングは初見の支援者を0.5秒で惹きつける勝負。
+        デザインの美しさと、ベネフィットが一瞬で伝わる情報設計の両立が最重要と捉えています。</p>
+      </div>
+      <div class="u-card">
+        <span class="qno mono">ISSUE 04</span>
+        <h3>単発ではなく、継続できる体制を探している</h3>
+        <p>今後も海外製品を継続展開される予定とのこと。毎回ゼロから信頼関係を築くのではなく、
+        トンマナや意図を理解したパートナーとして、スピード感を持って並走したいと考えています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section class="value">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">WHAT KAIROS OFFERS / 提供できる価値</span>
+      <h2>「デザインの手」として、<br>御社の商品展開スピードに合わせます。</h2>
+      <p>Kairosは少人数のWeb制作・システム開発チームです。1案件に対して企画から手を出しすぎず、
+      御社が決めた構成・訴求を最大限活かす"仕上げの専門職"として伴走します。</p>
+    </div>
+    <div class="value-grid">
+      <div class="v-card">
+        <span class="v-num">01</span>
+        <div class="v-icon"></div>
+        <h3>海外素材の日本語ローカライズ</h3>
+        <p>英語・中国語表記の置き換えはもちろん、日本語の文字量・改行位置に合わせてレイアウトごと再構成。
+        違和感のない"日本製"のようなLPに仕上げます。</p>
+      </div>
+      <div class="v-card">
+        <span class="v-num">02</span>
+        <div class="v-icon gold"></div>
+        <h3>訴求意図を汲んだビジュアル化</h3>
+        <p>用意いただいたコピー・構成の意図を読み取り、どこで惹きつけ、どこで安心させ、
+        どこで後押しするかを意識したビジュアル表現に落とし込みます。</p>
+      </div>
+      <div class="v-card">
+        <span class="v-num">03</span>
+        <div class="v-icon coral"></div>
+        <h3>統一感あるトンマナ設計</h3>
+        <p>サムネイルからリターン画像まで、フォント・配色・余白ルールを最初に設計。
+        20〜25枚でも破綻しない一貫した世界観を保ちます。</p>
+      </div>
+      <div class="v-card">
+        <span class="v-num">04</span>
+        <div class="v-icon"></div>
+        <h3>画像合成・GIF編集まで一括対応</h3>
+        <p>レタッチ・合成・比較カット作成・簡易GIFの文字入れ編集まで、
+        チーム内で完結できる体制のため、やり取りの手間を最小化できます。</p>
+      </div>
+      <div class="v-card">
+        <span class="v-num">05</span>
+        <div class="v-icon gold"></div>
+        <h3>継続を前提とした並走体制</h3>
+        <p>1案件ごとの納品で終わらせず、過去の制作物やフィードバックをチーム内でナレッジ化。
+        2件目以降は初動がより速く、精度の高い提案が可能になります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">FLOW / 進め方のイメージ</span>
+      <h2>まずは1案件、小さくご一緒するところから。</h2>
+      <p>選考ステップに沿って、まずは制作テストや1案件単位でのお取り組みからスタートできればと考えています。</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <span class="t-step mono">STEP 01</span>
+        <h3>ヒアリング・素材受領</h3>
+        <p>構成案・コピー・海外素材をお預かりし、商品の訴求ポイントとターゲット像をすり合わせます。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-step mono">STEP 02</span>
+        <h3>トンマナ・デザインラフ提示</h3>
+        <p>配色・フォント・レイアウトの方向性を先に共有。本制作前に認識のズレを解消します。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-step mono">STEP 03</span>
+        <h3>本制作（20〜25枚想定）</h3>
+        <p>サムネイル・大見出し・訴求カット・リターン画像・GIF編集まで、統一ルールに沿って制作します。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-step mono">STEP 04</span>
+        <h3>フィードバック・修正対応</h3>
+        <p>チャットでの指摘にスピーディーに対応。改善提案が必要な箇所は代替案もあわせてご提示します。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-step mono">STEP 05</span>
+        <h3>納品・掲載サポート相談</h3>
+        <p>各クラウドファンディングサイトへの配置についても、必要に応じて対応方法をご相談いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>御社の"伝えたい熱量"を、<br>支援に変わる<span class="accent">一枚</span>にします。</h2>
+    <p class="lead2">まずは制作テストやポートフォリオ共有からで構いません。
+    長期的に信頼いただけるデザインパートナーとして、Kairosをご検討いただければ幸いです。</p>
+    <div class="cta-box">
+      <span class="cta-main">ご相談・ご質問はお気軽にどうぞ</span>
+      <span class="cta-sub">ポートフォリオ・制作体制資料、すぐにご用意できます</span>
+      <a href="#" class="btn">Kairosに相談してみる</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">KAIROS</span> — Web制作・システム開発チーム ｜ ご提案 for 合同会社聖 様
+</footer>
+
+</body>
+</html>
